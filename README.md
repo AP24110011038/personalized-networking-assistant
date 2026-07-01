@@ -3,39 +3,42 @@
 ## Task 1: Description of the ER Diagram
 
 ### Overview
-The Personalized Networking Assistant helps users discover and connect with professionals based on their interests, skills, goals, and networking preferences.
+The Personalized Networking Assistant stores user profiles, event contexts, networking sessions, AI-generated conversation starters, Wikipedia fact checks, and system logs.
 
-### Main Entities
+## Entities Involved
 
-1. User
-   - User_ID
-   - Name
-   - Email
-   - Skills
-   - Interests
+- User Profile
+- Event Context
+- Networking Session
+- Generated Starter
+- Wikipedia Fact Check
+- Log Entry
 
-2. Profile
-   - Profile_ID
-   - User_ID
-   - Bio
-   - Experience
-   - Education
+## Primary Keys
 
-3. Connection
-   - Connection_ID
-   - User1_ID
-   - User2_ID
-   - Status
+- UserID
+- EventID
+- SessionID
+- StarterID
+- FactCheckID
+- LogID
 
-4. Recommendation
-   - Recommendation_ID
-   - User_ID
-   - Recommended_User_ID
-   - Score
+## Relationships
 
-### Relationships
+- One User Profile can have many Networking Sessions.
+- One Event Context can have many Networking Sessions.
+- One Networking Session can generate many Conversation Starters.
+- One Networking Session can have many Wikipedia Fact Checks.
+- One Networking Session can have many Log Entries.
 
-- One User has one Profile.
-- One User can have many Connections.
-- One User can receive many Recommendations.
-- Recommendations connect users with similar interests and goals.
+## Foreign Keys
+
+- Networking Session references User Profile using UserID.
+- Networking Session references Event Context using EventID.
+- Generated Starter references Networking Session using SessionID.
+- Wikipedia Fact Check references Networking Session using SessionID.
+- Log Entry references Networking Session using SessionID.
+
+## Purpose
+
+This ER model is normalized to reduce redundancy and supports AI-generated conversation starters, fact verification, session tracking, and detailed system logging.
